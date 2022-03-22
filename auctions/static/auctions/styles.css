@@ -1,0 +1,402 @@
+body {
+    padding: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+small {
+    font-size: 12px !important;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.listing-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline;
+}
+
+.listing-link:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.listing {
+    display: flex;
+    margin-block: 2em;
+}
+
+.listing-img {
+    max-width: 50%;
+}
+
+.listing-info {
+    margin-left: 2em;
+}
+
+.tool-bar {
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    display: inline-block;
+}
+
+.container {
+    padding: 8px 16px 8px 16px;
+}
+
+.listing-page-img {
+    display: inline-block;
+    width: 50%;
+    margin-right: 2em;
+}
+
+.listing-page-inf {
+    display: inline-block;
+    width: 50%;
+}
+
+.listing-page-inf span {
+    color: gray;
+    font-size: 12px;
+}
+
+.img-st {
+    width: 100%;
+    height: 30vw;
+    object-fit: scale-down;
+}
+
+.page-title {
+    display: block;
+}
+
+.login-card {
+    width: 20rem;
+    margin: auto;
+    text-align: center;
+}
+
+.login-main {
+    padding-block: 20px;
+    padding-inline: 10px;
+}
+
+.login-btn {
+    width: 10rem !important;
+    margin: auto;
+}
+
+.login-aux {
+    margin-top: 10px;
+}
+
+.login-aux a {
+    color: blue;
+}
+
+.login-aux a:hover {
+    text-decoration: underline;
+}
+
+.create-card {
+    width: 40rem;
+    margin: auto;
+}
+
+.comment-body {
+    width: 100%;
+    height: 5rem !important;
+}
+
+.bid-form {
+    text-align: center;
+}
+
+.bid-input {
+    border: none;
+    width: 4ch;
+}
+
+.bid-input[type="text"] {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.bid-input:hover, .bid-input:focus {
+    outline: none;
+}
+
+.listing-page-bidding {
+    text-align: center;
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-top: 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.m-a {
+    margin: auto;
+}
+
+.bidding-button {
+    margin-top: -29px;
+}
+
+.wl-btn {
+    margin-left: 1.73rem;
+}
+
+/* #like-button {
+    color: gray;
+    font-size: 0.75em;
+    background-color: transparent;
+    border: 0.1em solid;
+    border-radius: 1em;
+    padding: 0.333em 1em 0.25em;
+    line-height: 1.2em;
+    box-shadow: 0 0.25em 1em -0.25em;
+    cursor: pointer;
+    transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+    outline: 0;
+    margin: 5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;    
+}
+
+
+#like-button:hover {
+color: #4d9ceb;
+}
+
+#like-button:active {
+transform: scale(0.95);
+}
+
+#like-button.selected {
+color: white;
+background-color: #4d9ceb;
+border-color: #4d9ceb;
+} */
+
+.close-button {
+    color: gray;
+    font-size: 0.75em;
+    background-color: transparent;
+    border: 0.1em solid;
+    border-radius: 1em;
+    padding: 0.333em 1em 0.25em;
+    line-height: 1.2em;
+    box-shadow: 0 0.25em 1em -0.25em;
+    cursor: pointer;
+    transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+    outline: 0;
+    margin: 5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    color: #ff6961;
+}
+
+.bid-f {
+    display: block;
+}
+
+
+li {
+    list-style: none;
+}
+
+.category {
+    color: gray;
+    font-weight: 400;
+    font-size: 17px;
+    transform: all 200ms ease-in-out;
+}
+
+.category:hover {
+    color: #4d9ceb;
+    
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    min-width: 120px;
+    z-index: 10;
+    right: 0 !important;
+    left: auto !important;
+    /* top: 100% !important;
+    transform: translateX(-50%) !important; */
+}
+
+.show {
+    display: block;
+}
+
+.user-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    align-self: center;
+}
+
+.navlink-dropdown {
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.navlink-dropdown:hover {
+    color: #1c6e8f;
+}
+
+.card-text {
+    height: 8rem !important;
+    overflow: hidden;
+}
+
+.card-body h4 {
+    width: 100%;
+    height: 4rem !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+}
+
+[data-title] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-title]:hover::before {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -46px;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+.card-img-top {
+    margin-top: 2rem;
+}
+
+.heart-wrapper {
+    position: absolute;
+    z-index: 5;
+    right: 1.81em;
+    top: 0.875em;
+}
+
+.myl_card {
+    position: absolute;
+    z-index: 5;
+    font-weight: 400;
+    padding: -0.625rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+    color: white;
+}
+
+.bg-green {
+    background-color: #28a745;
+}
+
+.bg-red {
+    background-color: #dc3545;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.input-group.rounded {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.blur-filter {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.overlay {
+    z-index: 10;
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.alert-abs {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    width: 40rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.vis-hidden {
+    visibility: hidden;
+}
+
+.block-scroll {
+    overflow-y: hidden;
+}
+
+

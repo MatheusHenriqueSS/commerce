@@ -1,0 +1,18 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+{% if q.count %}
+<div class="container m-a input-group rounded">
+    <input type="search" id="searchBox" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fa fa-search"></i>
+    </span>
+  </div>
+{% endif %}
+<ul class="container m-a d-flex justify-content-between">
+
+    {% for item in q %}
+        <li class=""><a href="{% url 'category' type=item %}"><h5 class="category">{{item|capfirst}}</h5></a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

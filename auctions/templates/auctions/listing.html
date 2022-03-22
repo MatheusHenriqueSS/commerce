@@ -1,0 +1,89 @@
+{% extends "auctions/layout.html" %}
+
+{% load humanize %}
+
+{% block body %}
+    {% if message != "" %}
+        {{ message|safe }}
+    {% endif %}
+<div class="row container m-a">
+    {% if user.is_authenticated %}
+    <div class="tool-bar container">
+        {% if user.is_authenticated %}
+        <div class="buttons">
+            <div class="heart-like-button" data-catid="{{auction_id}}">
+            </div>
+        </div>
+        {% endif %}
+        {% if is_creator == True %}
+        <div class="buttons">
+            <form action={% url 'close' %} method="post">
+                {% csrf_token %}
+                <input hidden name="auction_id" value={{auction_id}}>
+                <!--<input type="submit" value="close auction">-->
+                <button type="submit" class="close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    close listing
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="col-md-6 text-center align-self-center">
+        <img class="img-fluid" src="{{q.image}}">
+    </div>
+    <div class="listing-page-inf">
+        <h2 class="listing-title">{{q.product}}</h2>
+        <h3 id="current_value">${{q.price| intcomma}}</h3>
+        <p style="max-height: 10rem; overflow: auto;">{{q.description}}</p>
+        <span>Creator: {{q.user}}</span>
+    
+        {% if user.is_authenticated %}
+        <div class="listing-page-bidding">
+            <form class="bid-form" id="bidding-form" action={% url 'bid' %} method="post">
+                {% csrf_token %}
+                <input class="bid-input" type="text" id="bidding_val" step="any" name="bidding_val" value="0.00" min="0.01">
+                <small class="form-text text-muted">Your bid must be greater than the current price.</small>
+                <input hidden id="bidding_value" name="auction_id" value={{auction_id}}>
+                <div class="form-group"><input class="btn btn-success" type="submit" value="Make Bid"></div>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+ 
+
+    <div class="d-flex justify-content-start row">
+    <div class="d-flex flex-column col-md-8">
+    <div class="container">
+    <div style="max-height: 30rem; overflow: auto;">
+        {% for comment in comments %}
+            <div class="commented-section mt-2">
+                <div class="d-flex flex-row align-items-center commented-user">
+                    <h5 class="mr-2">{{ comment.name }}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.created_on|naturaltime }}</span>
+                </div>
+                <div class="comment-text-sm"><span>{{ comment.body | linebreaks }}</span></div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+        {% if new_comment %}
+        <div class="alert alert-success">
+            Comment was added sucessfully!
+        </div>
+        {% endif %}
+        <form class="d-flex flex-column" name="commentForm" id="comment-form" method="post">
+            {% csrf_token %}
+            <div id="commentary" class="form-group">{{ comment_form.as_p }}</div>
+            <div class="form-group align-self-end bidding-button"><button class="btn btn-primary" type="submit">Post comment</button></div>
+        </form>
+    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

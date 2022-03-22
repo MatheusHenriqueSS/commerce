@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+
+{% load humanize %}
+
+{% block body %}
+    
+<div class="container">
+    <h2 class="page-title">{{title}}</h2>
+    {% if message != "" %}
+    {{ message|safe }}
+    {% endif %}
+    {% if query.count %}
+    <div class="input-group rounded">
+        <input type="search" id="searchBox" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    {% endif %}
+    <div class="row">
+    {% for q in query %}
+        <div class="col-md-6 col-lg-4"> 
+            <!-- <div class="heart-like-button"></div> -->
+            {% if user.is_authenticated %}
+            <div class="heart-wrapper">
+                <div class="heart-like-button" data-catid="{{q.id}}">
+                </div>
+            </div>
+            {% endif %}
+            {% if my_listings %}
+                {% if q.active %}
+                    <button class="myl_card bg-green">Running</button>
+                {% else %}
+                    <button class="myl_card bg-red">Closed</button>
+                {% endif %}
+            {% endif %}
+            <div class="card">
+                <img class="card-img-top img-st" src={{q.image}}></a>
+                    <div class="card-body">
+                        <h3 class="card-subtitle">${{q.price|intcomma }}</h3>
+                        <div data-title="{{q.product}}" ><h4 class="data-title">{{q.product}}</h4></div>
+                        <p class="card-text">{{q.description}}</p>
+                    </div>
+                    <a href="{% url 'listing' product=q.id %}" class="card-link"></a>
+            </div>
+            
+        </div>
+    {% endfor %}        
+    </div>
+</div>
+{% endblock %}

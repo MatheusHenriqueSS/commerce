@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'auctions/heart.css' %}" rel="stylesheet">
+    </head>
+    <body class="{% if q.active == False %}block-scroll{% endif %}">
+        <div class="{% if q.active == False %}overlay{% endif %}">
+            <div id="alertBox" class="alert alert-success alert-abs {% if q.active != False%}d-none{% endif %}" role="alert">
+                <h4 class="alert-heading">This auction has ended!</h4>
+                <p>{{main_msg}}</p>
+                <hr>
+                <p class="mb-0"><a class="navlink-dropdown" href="{% url 'index' %}">Go back to active listings.</a></p>
+            </div>
+        </div>
+        <div class="{% if q.active == False %}blur-filter{% endif %}">
+            <nav class="navbar navbar-light">
+                <h1><a href="{% url 'index' %}">Auctions</a></h1>
+                <div>
+                    <!--{% if user.is_authenticated %}
+                        Signed in as <strong>{{ user.username }}</strong>.
+                    {% else %}
+                        Not signed in.
+                    {% endif %}
+                    -->
+                </div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'categories' %}" class="nav-link">Categories</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <!--<div class="dropdown">
+                            <button class="user-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                {{user.get_username}}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a href="{% url 'logout' %}" class="dropdown-item">Log out</a>
+                                <a href="{% url 'create' %}" class="dropdown-item">Create Listing</a>
+                                <a href="" class="dropdown-item">My listings</a>
+                            </div>
+                        </div>
+                        -->
+                    <div class="dropdown">
+                        <a class="navlink-dropdown btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.get_username }}
+                        </a>
+            
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" x-placement="bottom-start">
+                            <a class="navlink-dropdown nav-link dropdown-item" href="{% url 'watchlist_page' %}">Watchlist</a>
+                            <a class="navlink-dropdown nav-link dropdown-item" href="{% url 'create' %}">Create Listing</a>
+                            <a class="navlink-dropdown nav-link dropdown-item" href="{% url 'my_listings' %}">My listings</a>
+                            <a href="{% url 'logout' %}" class="navlink-dropdown nav-link dropdown-item">Log out</a>
+                        </div>
+                    </div>
+                    </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% block body %}
+            {% endblock %}
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src={% static 'auctions/index.js'%}></script>
+    </body>
+</html>
