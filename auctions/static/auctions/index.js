@@ -215,7 +215,8 @@ $("#searchBox").keyup(function(evt) {
         },
         success: function(data)
         {
-            console.log(data)
+            data = data.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            $("#current_value").text(data);
             setTimeout(priceUpdate, 5000);
         }
     })
