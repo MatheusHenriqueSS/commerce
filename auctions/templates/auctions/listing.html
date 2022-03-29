@@ -37,7 +37,7 @@
         <img class="img-fluid" src="{{q.image}}">
     </div>
     <div class="listing-page-inf">
-        <h2 class="listing-title">{{q.product}}</h2>
+        <h2 class="listing-title" data-catid="{{q.id}}">{{q.product}}</h2>
         <h3 id="current_value">${{q.price| intcomma}}</h3>
         <p style="max-height: 10rem; overflow: auto;">{{q.description}}</p>
         <span>Creator: {{q.user}}</span>

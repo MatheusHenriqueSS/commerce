@@ -86,8 +86,6 @@ $(".heart-like-button").each(function () {
     var button = $(this);
     var catid;
     catid = $(this).attr("data-catid");
-    console.log("buceta")
-    console.log(catid); 
     $.ajax(
         {
             type: "POST",
@@ -206,4 +204,20 @@ $("#searchBox").keyup(function(evt) {
     })
 });
 
-$(".div-alert").alert();
+(function priceUpdate() {
+    var catid = $(".listing-title").attr("data-catid");
+    console.log("debug:" + catid);
+    $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8000/current_price",
+        data: {
+            product_id: catid
+        },
+        success: function(data)
+        {
+            console.log(data)
+            setTimeout(priceUpdate, 5000);
+        }
+    })
+})();
+

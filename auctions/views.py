@@ -216,7 +216,7 @@ def close_listing(request):
         auction_id = request.POST["auction_id"]
         Listing.objects.filter(id = auction_id).update(active=False)
 
-        return HttpResponseRedirect(reverse("checkout", kwargs={"product": auction_id}))
+        return HttpResponseRedirect(reverse("listing", kwargs={"product": auction_id}))
 
 
 def checkout(request, product):
@@ -290,3 +290,16 @@ def on_watchlist(request):
             return HttpResponse("0")
     else:
         return HttpResponse("Request method is not a POST")
+
+@csrf_exempt
+def current_price(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+    
+        listing = Listing.objects.filter(id=product_id).first()
+
+        print(listing.price)
+        return HttpResponse(listing.price)
+    else:
+        return HttpResponse("Request method is not a POST")
+        
