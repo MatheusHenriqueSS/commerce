@@ -44,12 +44,12 @@
     
         {% if user.is_authenticated %}
         <div class="listing-page-bidding">
-            <form class="bid-form" id="bidding-form" action={% url 'bid' %} method="post">
+            <form class="bid-form" id="bidding-form">
                 {% csrf_token %}
                 <input class="bid-input" type="text" id="bidding_val" step="any" name="bidding_val" value="0.00" min="0.01">
                 <small class="form-text text-muted">Your bid must be greater than the current price.</small>
                 <input hidden id="bidding_value" name="auction_id" value={{auction_id}}>
-                <div class="form-group"><input class="btn btn-success" type="submit" value="Make Bid"></div>
+                <div class="http://127.0.0.1:8000/listings/5"><input class="btn btn-success" type="submit" value="Make Bid"></div>
             </form>
         </div>
         {% endif %}

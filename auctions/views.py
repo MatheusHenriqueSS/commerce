@@ -226,26 +226,36 @@ def checkout(request, product):
         winner_username = winner.username
     return render(request, "auctions/checkout.html", {"creator_username": creator.username, "winner_username": winner_username, "main_msg": message})
 
+@csrf_exempt
 def bid(request):
-    bidding_value = request.POST["bidding_val"]
-    auction_id = request.POST["auction_id"]
-    current_value = Listing.objects.get(id=auction_id).price
-    is_active = Listing.objects.get(id=auction_id).active
+    if request.method == "POST":
+        bidding_value = request.POST["bidding_val"]
+        auction_id = request.POST["product_id"]
+        print(bidding_value, auction_id)
+        current_value = Listing.objects.get(id=auction_id).price
+        is_active = Listing.objects.get(id=auction_id).active
 
-    if (is_active == False):
-        return HttpResponseRedirect(reverse("checkout", kwargs={"product": auction_id}))
-    
+        if (is_active == False):
+            return HttpResponseRedirect(reverse("checkout", kwargs={"product": auction_id}))
+        
 
-    bidding_value = bidding_value.replace(',', "").replace('.', "")    
-    bidding_value = round(int(bidding_value) / 100, 2)
-    bidding_validation = True
-    if (bidding_value <= float(current_value)):
-        bidding_validation = False
+        bidding_value = bidding_value.replace(',', "").replace('.', "")    
+        bidding_value = round(int(bidding_value) / 100, 2)
+        bidding_validation = True
+        if (bidding_value <= float(current_value)):
+            bidding_validation = False
 
-    new_entry = Bid(price=bidding_value, auction=Listing.objects.get(id=auction_id), user=User.objects.get(id=get_user(request).id), valid=bidding_validation)
-    new_entry.save()
+        new_entry = Bid(price=bidding_value, auction=Listing.objects.get(id=auction_id), user=User.objects.get(id=get_user(request).id), valid=bidding_validation)
+        new_entry.save()
 
-    return HttpResponseRedirect(reverse("listing", kwargs={"product": auction_id}))
+        highest_bid = Bid.objects.filter(auction=Listing.objects.get(id=auction_id), valid=True).order_by('-price').first()
+        if (highest_bid is not None):
+            Listing.objects.filter(id=auction_id).update(price = highest_bid.price)
+        
+        listing = Listing.objects.filter(id=auction_id).first()
+        return HttpResponse(listing.price)
+    else:
+        return HttpResponse("Request method is not a POST")
 
 @login_required(login_url='login')
 def watchlist_page(request):
@@ -295,11 +305,20 @@ def on_watchlist(request):
 def current_price(request):
     if request.method == "POST":
         product_id = request.POST["product_id"]
-    
         listing = Listing.objects.filter(id=product_id).first()
-
-        print(listing.price)
         return HttpResponse(listing.price)
+    else:
+        return HttpResponse("Request method is not a POST")
+
+@csrf_exempt
+def is_active(request):
+    if request.method == "POST":
+        product_id = request.POST["product_id"]
+        listing = Listing.objects.filter(id=product_id).first()
+        print("buceta", listing.active)
+        if(listing.active):
+            return HttpResponse("1")
+        return HttpResponse("0")
     else:
         return HttpResponse("Request method is not a POST")
         

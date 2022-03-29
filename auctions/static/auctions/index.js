@@ -74,12 +74,31 @@ $("#bidding-form").submit(function(evt) {
     var bidding_val = parseInt($("#bidding_val").val().replaceAll('$','').replaceAll('.','').replaceAll(',',''))/100;
     bidding_val = bidding_val.toFixed(2);
     
-
-    if (parseFloat(bidding_val) <= parseFloat(current_val)) {
-        $("#bidding_val").val("0.00");
-        evt.preventDefault();
+    evt.preventDefault();
+    if (parseFloat(bidding_val) <= parseFloat(current_val)) {        
         alert("The bidding value must be greater than the current value: $" + current_val)
     }
+    else {
+        var catid = $("#bidding_value").attr("value");
+        console.log(catid + bidding_val);
+        $.ajax(
+            {
+                type: "POST",
+                url: "http://127.0.0.1:8000/bid",
+                data: {
+                    product_id: catid,
+                    bidding_val: bidding_val
+                },
+                success : function(data)
+                {
+                    data = data.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    $("#current_value").text("$" + data);
+                }
+            }
+        )
+    }
+    $("#bidding_val").val("$0.00");
+    $("#bidding_val").css("width", $("#bidding_val").val().length + "ch");
 });
 
 $(".heart-like-button").each(function () {
@@ -204,21 +223,6 @@ $("#searchBox").keyup(function(evt) {
     })
 });
 
-(function priceUpdate() {
-    var catid = $(".listing-title").attr("data-catid");
-    console.log("debug:" + catid);
-    $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/current_price",
-        data: {
-            product_id: catid
-        },
-        success: function(data)
-        {
-            data = data.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            $("#current_value").text(data);
-            setTimeout(priceUpdate, 5000);
-        }
-    })
-})();
+
+
 

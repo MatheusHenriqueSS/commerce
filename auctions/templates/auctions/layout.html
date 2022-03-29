@@ -10,7 +10,7 @@
         <link href="{% static 'auctions/heart.css' %}" rel="stylesheet">
     </head>
     <body class="{% if q.active == False %}block-scroll{% endif %}">
-        <div class="{% if q.active == False %}overlay{% endif %}">
+        <div id="close" class="{% if q.active == False %}overlay{% endif %}">
             <div id="alertBox" class="alert alert-success alert-abs {% if q.active != False%}d-none{% endif %}" role="alert">
                 <h4 class="alert-heading">This auction has ended!</h4>
                 <p>{{main_msg}}</p>
@@ -81,5 +81,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src={% static 'auctions/index.js'%}></script>
+        {% if "listing" in request.path %}
+        <script src={% static 'auctions/priceAndBidding.js' %}></script>
+        {% endif %}
     </body>
 </html>

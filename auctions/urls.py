@@ -18,5 +18,6 @@ urlpatterns = [
     path("category/<str:type>", views.category, name="category"),
     path("my_listings", views.my_listings, name="my_listings"),
     path("on_watchlist", views.on_watchlist, name="on_watchlist"),
-    path("current_price", views.current_price, name="current_price")
+    path("current_price", views.current_price, name="current_price"),
+    path("is_active", views.is_active, name="is_active")
 ]
