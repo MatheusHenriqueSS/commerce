@@ -223,6 +223,11 @@ $("#searchBox").keyup(function(evt) {
     })
 });
 
+//set scrollbar to the end of commentary section
+$("#commentBox").scrollTop($("#commentBox")[0].scrollHeight);
 
 
-
+//close auction 'are you sure' confirmation
+$(".close-button").click(function(){
+    return confirm('Are you sure you want to close the auction?');
+});
