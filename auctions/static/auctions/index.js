@@ -138,14 +138,14 @@ $(".heart-like-button").click(function(){
     $.ajax(
         {
             type: "POST",
-            url: "http://127.0.0.1:8000/watchlist",
+            url: "http://127.0.0.1:8000/add_to_watchlist",
             data: {
                 auction_id: catid
             },
             success: function()
             {
                 button.toggleClass("liked");
-                if(window.location.href.includes("watchlists") && !button.hasClass("liked")) {
+                if(window.location.href.includes("watchlist") && !button.hasClass("liked")) {
                     button.parent().parent().addClass("d-none");
                 }
             }
