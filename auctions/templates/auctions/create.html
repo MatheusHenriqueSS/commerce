@@ -1,22 +1,21 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    {% for item in categories %}
-        <h5>{{item.name}}</h5>
-    {% endfor %}
     <div class="create-card">
         <h2>Create new listing</h2>
         <form class="form-group" action={% url 'create' %} method="post">
             {% csrf_token %}
             {% for field in form %}
                 <div class="form-group">
-                    {{ field.erros }}
                     {{ field.label_tag}}
                     {{ field }}
                     {% if field.help_text %}
                     <p class="help">{{ field.help_text|safe }}</p>
                     {% endif %}
                 </div>  
+                {% for error in field.errors %}
+                <p style="color:red">{{error}}</p>
+                {% endfor %}
             {% endfor %}
             <input class="btn btn-primary btn-block" type="submit" value="Create Listing">
         </form>
