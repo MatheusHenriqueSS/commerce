@@ -2,6 +2,7 @@ if (window.history.replaceState) {
     window.history.replaceState( null, null, window.location.href );
 }
 
+
 //set up bidding form format, ignoring non-numerical values
 //adding commas and decimal part automatically
 //and setting up input size based on current value
@@ -144,6 +145,9 @@ $(".heart-like-button").click(function(){
             success: function()
             {
                 button.toggleClass("liked");
+                if(window.location.href.includes("watchlists") && !button.hasClass("liked")) {
+                    button.parent().parent().addClass("d-none");
+                }
             }
         }
     )
@@ -212,7 +216,10 @@ $("#searchBox").keyup(function(evt) {
 });
 
 //set scrollbar to the end of commentary section
-$("#commentBox").scrollTop($("#commentBox")[0].scrollHeight);
+if(window.location.href.includes("listings")) {
+    $("#commentBox").scrollTop($("#commentBox")[0].scrollHeight);
+}
+
 
 
 //close auction 'are you sure' confirmation
