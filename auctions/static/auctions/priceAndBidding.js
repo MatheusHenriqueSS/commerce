@@ -1,3 +1,5 @@
+//check current auction price every 5s
+//if auction is closed redirect to 'closed' page
 var counter = 0;
 (function priceUpdate() {
     var catid = $(".listing-title").attr("data-catid");

@@ -2,6 +2,9 @@ if (window.history.replaceState) {
     window.history.replaceState( null, null, window.location.href );
 }
 
+//set up bidding form format, ignoring non-numerical values
+//adding commas and decimal part automatically
+//and setting up input size based on current value
 $("#bidding_val").keydown(function(evt) {
     if ((evt.which < 48 || evt.which > 57) && evt.which!= 13 && evt.which != 8 && evt.which != 46 && !(evt.which >= 37 && evt.which <= 40)
     && !(evt.which >= 96 && evt.which <= 105)) {
@@ -66,7 +69,8 @@ $("#bidding_val").keydown(function(evt) {
 
 });
 
-
+//make bidding offer on form submition
+//verifies if value is valid and update current auction price
 $("#bidding-form").submit(function(evt) {
     var current_val = parseInt($("#current_value").text().replaceAll('$', '').replaceAll('.','').replaceAll(',',''))/100;
     current_val = current_val.toFixed(2);
@@ -80,7 +84,6 @@ $("#bidding-form").submit(function(evt) {
     }
     else {
         var catid = $("#bidding_value").attr("value");
-        console.log(catid + bidding_val);
         $.ajax(
             {
                 type: "POST",
@@ -101,6 +104,7 @@ $("#bidding-form").submit(function(evt) {
     $("#bidding_val").css("width", $("#bidding_val").val().length + "ch");
 });
 
+//set every watchlist button based on current watchlist
 $(".heart-like-button").each(function () {
     var button = $(this);
     var catid;
@@ -125,11 +129,11 @@ $(".heart-like-button").each(function () {
     )
 });
 
+//change watchlist state when heart is clicked
 $(".heart-like-button").click(function(){    
     var button = $(this);
     var catid;
     catid = $(this).attr("data-catid"); 
-    console.log(catid); 
     $.ajax(
         {
             type: "POST",
@@ -146,23 +150,7 @@ $(".heart-like-button").click(function(){
 });
 
 
-
-//navbar dropdown menu
-
-// $("#dropdownMenuButton").click(function() {
-//     $(".dropdown-menu").toggleClass("show");
-// });
-
-// window.click(function(evt) {
-//     if (!evt.target.matches('#dropdownMenuButton')) {
-//         $(".dropdown-menu").removeClass("show");
-//     }
-// });
-
-
-//$(".dropdown-toggle").dropdown("show");
-
-
+//truncate auction title based on its length
 $(".card-body h4").each(function(index) {
     let title = $(this).text();
     if (title.length > 42) {
@@ -174,6 +162,7 @@ $(".card-body h4").each(function(index) {
 });
 
 
+//truncate auction text based on its lentgh
 $(".card-text").each(function(index) {
     let text = $(this).text();
 
@@ -185,12 +174,13 @@ $(".card-text").each(function(index) {
     $(this).text(text);
 });
 
-
+//add auction link to each card
 $(".card").click(function(index) {
     let link = $(this).find('a').attr('href');
     location.href = link;
 });
 
+//display current auction based on search
 $("#searchBox").keyup(function(evt) {
     var search = $("#searchBox").val().toLowerCase();
     search = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -198,7 +188,6 @@ $("#searchBox").keyup(function(evt) {
     $(".col-md-6.col-lg-4").each(function(index) {
         var productName = $(this).find('.card-body div').data("title").toLowerCase();
         productName = productName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        console.log(search, productName);
         
         if (search == "" || productName.includes(search)) {
             $(this).removeClass("d-none");
@@ -211,7 +200,6 @@ $("#searchBox").keyup(function(evt) {
     $(".category").each(function(index) {
         var productName = $(this).text().toLowerCase();
         productName = productName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        console.log(search, productName);
         
         if (search == "" || productName.includes(search)) {
             $(this).parent().parent().removeClass("d-none");
