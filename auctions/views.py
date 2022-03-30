@@ -138,6 +138,32 @@ def listing(request, product):
             last_bid.alert = True
             last_bid.save()
             message = "<div class=\"alert alert-success text-center\"> Bid accepted: Your bid is the current bid</div>"
+    
+        #comment section handling
+
+    comments = listing.comments.filter(active=True)
+    new_comment = None
+
+
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+
+            
+            # create comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            if new_comment.body == "":
+                #handle empty commentary
+                new_comment = None
+            else:
+            # assign the current post to the comment and the creator username
+                new_comment.listing = listing
+                new_comment.name = get_user(request).username
+                # save the comment to the database
+                new_comment.save()
+    
+    comment_form = CommentForm()
+
 
     #auction closed mensage handling
 
