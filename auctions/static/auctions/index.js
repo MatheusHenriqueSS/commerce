@@ -226,3 +226,7 @@ if(window.location.href.includes("listings")) {
 $(".close-button").click(function(){
     return confirm('Are you sure you want to close the auction?');
 });
+
+if (window.location.href.includes("create") || window.location.href.includes("listings")){
+    $("#bidding_val").css("width", $("#bidding_val").val().length + "ch");
+}
