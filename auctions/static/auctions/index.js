@@ -223,6 +223,8 @@ $("#searchBox").keyup(function(evt) {
     })
 });
 
+//set scrollbar to the end of commentary section
+$("#commentBox").scrollTop($("#commentBox")[0].scrollHeight);
 
 
 
