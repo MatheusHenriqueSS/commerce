@@ -2,6 +2,7 @@ from email.policy import default
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import datetime
+from django.utils.timezone import now
 
 
 class User(AbstractUser):
@@ -23,7 +24,7 @@ class Listing(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_DEFAULT, default=None)
     description = models.CharField(max_length=500)
     active = models.BooleanField(default=True)
-    date = models.DateTimeField(default=datetime.now(), blank=True)
+    date = models.DateTimeField(default=now, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
@@ -31,7 +32,7 @@ class Listing(models.Model):
 
 class Bid(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default = 0.00)
-    date = models.DateTimeField(default=datetime.now(), blank=True)
+    date = models.DateTimeField(default=now, blank=True)
     auction = models.ForeignKey(Listing, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     valid = models.BooleanField(default=True)
