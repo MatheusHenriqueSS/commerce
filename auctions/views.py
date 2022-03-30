@@ -219,14 +219,6 @@ def close_listing(request):
 
         return HttpResponseRedirect(reverse("listing", kwargs={"product": auction_id}))
 
-
-def checkout(request, product):
-
-    winner_username = ""
-    if winner != "":
-        winner_username = winner.username
-    return render(request, "auctions/checkout.html", {"creator_username": creator.username, "winner_username": winner_username, "main_msg": message})
-
 @csrf_exempt
 def bid(request):
     if request.method == "POST":
