@@ -132,6 +132,7 @@ $(".heart-like-button").each(function () {
 
 //change watchlist state when heart is clicked
 $(".heart-like-button").click(function(){    
+    console.log("clicked!");
     var button = $(this);
     var catid;
     catid = $(this).attr("data-catid"); 
