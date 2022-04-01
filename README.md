@@ -44,7 +44,9 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
 
 ## Setup
 - Clone the project:
-  ```git clone https://github.com/MatheusHenriqueSS/commerce.git```
+  ```
+  git clone https://github.com/MatheusHenriqueSS/commerce.git
+  ```
 - Download Django:
   ```pip install Django==4.0.3```
 - Make migrations:
