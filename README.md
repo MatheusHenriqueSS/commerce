@@ -1,7 +1,7 @@
 # Commerce
 A web application based on Django to simulate a eBay-like e-commerce that allow users to post auction listings, place biddings on them,<br>
 and add them to 'watchlists'. Additionaly, users can check auction listings created and their current state("running" or "closed").
-> Live demo [_here_](matheushenriquess.pythonanywhere.com). <!-- If you have the project hosted somewhere, include the link here. -->
+> Live demo [_here_](http://matheushenriquess.pythonanywhere.com/). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
