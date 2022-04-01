@@ -30,10 +30,11 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
 
 
 ## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Create auction listings
+- Place bids on auctions
+- Add commentary
+- Create watchlist
+- Check my listings
 
 
 ## Screenshots
