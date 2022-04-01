@@ -65,30 +65,26 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
   ```
 
 ## Project Status
-Project is: _in progress_.If you are no longer working on it, provide reasons why.
+Project is: _in progress_.
 
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
 Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
+- Website design
+- Commentary updating with jquery(ajax)
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
+- Add more aesthetics design
+- Add current commentary without reloading page
 
 
 ## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+Huge thanks for Brian, David and all CS50 staff for host a free online course with such a level of excellence.
 
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [@MatheusH](https://www.linkedin.com/in/matheus-hss/) - feel free to contact me!
 
 
 <!-- Optional -->
