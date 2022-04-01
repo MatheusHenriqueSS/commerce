@@ -88,7 +88,7 @@ $("#bidding-form").submit(function(evt) {
         $.ajax(
             {
                 type: "POST",
-                url: "http://127.0.0.1:8000/bid",
+                url: "http://matheushenriquess.pythonanywhere.com/bid",
                 data: {
                     product_id: catid,
                     bidding_val: bidding_val
