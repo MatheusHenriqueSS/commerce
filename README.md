@@ -60,20 +60,12 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
     python manage.py migrate
   ```
 - Run the application:
-  `
+  ```
     python manage.py runserver
-  `
-
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
+  ```
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project is: _in progress_.If you are no longer working on it, provide reasons why.
 
 
 ## Room for Improvement
