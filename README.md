@@ -18,14 +18,15 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
 
 
 ## General Information
-  This project was developed during CS50's Web Programming with Python and Javascript[course](https://cs50.harvard.edu/web/2020/). The focus of this project is to flex SQL and Database skills. Futhermore, it was necessary to apply some basic web programming features as live bidding and commentary box, as well, as watchlist.
+  This project was developed during CS50's Web Programming with Python and Javascript [course](https://cs50.harvard.edu/web/2020/). The focus of this project is to flex SQL and Database skills. Futhermore, it was necessary to apply some basic web programming features as live bidding and commentary box, as well, as watchlist.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- [Django - version 4.0.3](https://www.djangoproject.com/) - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+- [sqlite3](https://www.sqlite.org/index.html) - QLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world.
+- [jQuery - Ajax](https://jquery.com/) - jQuery simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
+- [Bootstrap](https://getbootstrap.com/) - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains HTML, CSS and Javascript-based design templates.
 
 
 ## Features
