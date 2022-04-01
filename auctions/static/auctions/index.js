@@ -139,7 +139,7 @@ $(".heart-like-button").click(function(){
     $.ajax(
         {
             type: "POST",
-            url: "http://127.0.0.1:8000/add_to_watchlist",
+            url: "http://matheushenriquess.pythonanywhere.com//add_to_watchlist",
             data: {
                 auction_id: catid
             },
