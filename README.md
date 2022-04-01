@@ -60,9 +60,9 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
     python manage.py migrate
   ```
 - Run the application:
-```
-  python manage.py runserver
-```
+  ```
+    python manage.py runserver
+  ```
 
 
 ## Usage
