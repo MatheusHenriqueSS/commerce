@@ -18,7 +18,7 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
 
 
 ## General Information
-  [This project was developed during CS50's Web Programming with Python and Javascript](https://cs50.harvard.edu/web/2020/). The focus of this project is to flex SQL and Database skills. Futhermore, it was necessary to apply some basic web programming features as live bidding and commentary box, as well, as watchlist.
+  This project was developed during CS50's Web Programming with Python and Javascript[course](https://cs50.harvard.edu/web/2020/). The focus of this project is to flex SQL and Database skills. Futhermore, it was necessary to apply some basic web programming features as live bidding and commentary box, as well, as watchlist.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
