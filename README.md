@@ -34,7 +34,7 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
 - Place bids on auctions
 - Add commentary
 - Create watchlist
-- Check my listings
+- Check created auctions
 
 
 ## Screenshots
@@ -43,9 +43,16 @@ and add them to 'watchlists'. Additionaly, users can check auction listings crea
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+- Clone the project:
+  ```git clone https://github.com/MatheusHenriqueSS/commerce.git```
+- Download Django:
+  ```pip install Django==4.0.3```
+- Make migrations:
+  ```python manage.py makemigrations```
+- Migrate:
+  ```python manage.py migrate```
+- Run the application:
+```python manage.py runserver```
 
 
 ## Usage
